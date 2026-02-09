@@ -2,14 +2,14 @@ import * as model from '../models/foodModel.js';
 
 export const getAll = async (req, res) => {
     try {
-        const exemplos = await model.findAll(req.query);
+        const food = await model.findAll(req.query);
 
-        if (!exemplos || exemplos.length === 0) {
+        if (!food || food.length === 0) {
             return res.status(200).json({
                 message: 'Nenhum registro encontrado.',
             });
         }
-        res.json(exemplos);
+        res.json(food);
     } catch (error) {
         console.error('Erro ao buscar:', error);
         res.status(500).json({ error: 'Erro ao buscar registros' });
@@ -153,5 +153,3 @@ export const remove = async (req, res) => {
         res.status(500).json({ error: 'Erro ao deletar registro' });
     }
 };
-
-
